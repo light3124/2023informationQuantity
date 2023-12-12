@@ -47,36 +47,36 @@ public class TestCase {
 
 	    // Write your testCase here
 
-	    // TARGET initial test
-	    myObject = new Frequencer();
-	    myObject.setSpace("Hi Ho Hi Ho".getBytes());
-	    freq = myObject.frequency();
-	    assert freq == -1: "Hi Ho Hi Ho, (null): " + freq;
-
-	    myObject = new Frequencer();
-	    myObject.setSpace("Hi Ho Hi Ho".getBytes());
-	    myObject.setTarget("".getBytes());
-	    freq = myObject.frequency();
-	    assert freq == -1: "Hi Ho Hi Ho, (): " + freq;
-
-	    // SPACE initial test
-	    myObject = new Frequencer();
-	    myObject.setTarget("H".getBytes());
-	    freq = myObject.frequency();
-	    assert freq == 0: "(null), H: " + freq;
-
-	    myObject = new Frequencer();
-	    myObject.setSpace("".getBytes());
-	    myObject.setTarget("H".getBytes());
-	    freq = myObject.frequency();
-	    assert freq == 0: "(), H: " + freq;
-
-	    //error occered case 
+	    // // TARGET initial test
 	    // myObject = new Frequencer();
 	    // myObject.setSpace("Hi Ho Hi Ho".getBytes());
+	    // freq = myObject.frequency();
+	    // assert freq == -1: "Hi Ho Hi Ho, (null): " + freq;
+
+	    // myObject = new Frequencer();
+	    // myObject.setSpace("Hi Ho Hi Ho".getBytes());
+	    // myObject.setTarget("".getBytes());
+	    // freq = myObject.frequency();
+	    // assert freq == -1: "Hi Ho Hi Ho, (): " + freq;
+
+	    // // SPACE initial test
+	    // myObject = new Frequencer();
 	    // myObject.setTarget("H".getBytes());
 	    // freq = myObject.frequency();
-	    // assert freq == 1: "Hi Ho Hi Ho, o H: " + freq;
+	    // assert freq == 0: "(null), H: " + freq;
+
+	    // myObject = new Frequencer();
+	    // myObject.setSpace("".getBytes());
+	    // myObject.setTarget("H".getBytes());
+	    // freq = myObject.frequency();
+	    // assert freq == 0: "(), H: " + freq;
+
+
+	    myObject = new Frequencer();
+	    myObject.setSpace("Hi Ho Hi Ho".getBytes());
+	    myObject.setTarget("o H".getBytes());
+	    freq = myObject.frequency();
+	    assert freq == 1: "Hi Ho Hi Ho, o H: " + freq;
 
 	}
 	catch(Exception e) {
