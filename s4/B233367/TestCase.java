@@ -51,24 +51,28 @@ public class TestCase {
 	    myObject = new Frequencer();
 	    myObject.setSpace("Hi Ho Hi Ho".getBytes());
 	    freq = myObject.frequency();
+	    System.out.println("Test 1");
 	    assert freq == -1: "Hi Ho Hi Ho, (null): " + freq;
 
 	    myObject = new Frequencer();
 	    myObject.setSpace("Hi Ho Hi Ho".getBytes());
 	    myObject.setTarget("".getBytes());
 	    freq = myObject.frequency();
+	    System.out.println("Test 2");
 	    assert freq == -1: "Hi Ho Hi Ho, (): " + freq;
 
 	    // SPACE initial test
 	    myObject = new Frequencer();
 	    myObject.setTarget("H".getBytes());
 	    freq = myObject.frequency();
+	    System.out.println("Test 3");
 	    assert freq == 0: "(null), H: " + freq;
 
 	    myObject = new Frequencer();
 	    myObject.setSpace("".getBytes());
 	    myObject.setTarget("H".getBytes());
 	    freq = myObject.frequency();
+	    System.out.println("Test 4");
 	    assert freq == 0: "(), H: " + freq;
 
 	    //error occered case 
@@ -76,6 +80,7 @@ public class TestCase {
 	    // myObject.setSpace("Hi Ho Hi Ho".getBytes());
 	    // myObject.setTarget("H".getBytes());
 	    // freq = myObject.frequency();
+	    // System.out.println("Test 5");
 	    // assert freq == 1: "Hi Ho Hi Ho, o H: " + freq;
 
 	}
