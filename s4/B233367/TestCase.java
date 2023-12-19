@@ -47,39 +47,57 @@ public class TestCase {
 
 	    // Write your testCase here
 
-	// Test case to detect the issue with frequency() method
-	myObject.setSpace("ABC".getBytes());
-	myObject.setTarget("ABCD".getBytes());  // Target length is greater than space length
-	try {
-	    freq = myObject.frequency();
-	    // If no exception is thrown, the test has failed
-	    assert false: "Expected ArrayIndexOutOfBoundsException, but got frequency: " + freq;
-	} catch (ArrayIndexOutOfBoundsException e) {
-	    // If exception is caught, the test has passed
-	    System.out.println("Test passed: " + e.getMessage());
-	}
+		// Test case to detect the issue with frequency() method
+		myObject.setSpace("ABC".getBytes());
+		myObject.setTarget("ABCD".getBytes());  // Target length is greater than space length
+		try {
+		    freq = myObject.frequency();
+		    // If no exception is thrown, the test has failed
+		    assert false: "Expected ArrayIndexOutOfBoundsException, but got frequency: " + freq;
+		} catch (ArrayIndexOutOfBoundsException e) {
+		    // If exception is caught, the test has passed
+		    System.out.println("Test passed: " + e.getMessage());
+		}
 
-	// Frequencerの新しいテストケース
-	myObject = new Frequencer();
-	myObject.setSpace("Hello World".getBytes());
-	myObject.setTarget("l".getBytes());
-	freq = myObject.frequency();
-	assert freq == 3: "Hello World, l: " + freq;
-	
-	myObject.setSpace("".getBytes()); // 空のSpaceに対するテスト
-	myObject.setTarget("H".getBytes());
-	freq = myObject.frequency();
-	assert freq == -1: "Empty space, H: " + freq;
-	
-	myObject.setSpace("Test String".getBytes());
-	myObject.setTarget("".getBytes()); // 空のTargetに対するテスト
-	freq = myObject.frequency();
-	assert freq == -1: "Test String, empty target: " + freq;
-	
-	myObject.setSpace("".getBytes()); // 空のSpaceと空のTargetに対するテスト
-	myObject.setTarget("".getBytes());
-	freq = myObject.frequency();
-	assert freq == -1: "Empty space and empty target: " + freq;
+		// Test Case 1: Target is not set
+		myObject = new Frequencer();
+		myObject.setSpace("Hi Ho Hi Ho".getBytes());
+		freq = myObject.frequency();
+		assert freq == -1 : "Target not set, expected -1, but got " + freq;
+		
+		// Test Case 2: Target's length is zero
+		myObject = new Frequencer();
+		myObject.setSpace("Hi Ho Hi Ho".getBytes());
+		myObject.setTarget(new byte[0]);
+		freq = myObject.frequency();
+		assert freq == -1 : "Target's length is zero, expected -1, but got " + freq;
+		
+		// Test Case 3: Space is not set
+		myObject = new Frequencer();
+		myObject.setTarget("H".getBytes());
+		freq = myObject.frequency();
+		assert freq == 0 : "Space not set, expected 0, but got " + freq;
+		
+		// Test Case 4: Space's length is zero
+		myObject = new Frequencer();
+		myObject.setSpace(new byte[0]);
+		myObject.setTarget("H".getBytes());
+		freq = myObject.frequency();
+		assert freq == 0 : "Space's length is zero, expected 0, but got " + freq;
+		
+		// Test Case 5: Normal case - Target present in Space
+		myObject = new Frequencer();
+		myObject.setSpace("Hi Ho Hi Ho".getBytes());
+		myObject.setTarget("H".getBytes());
+		freq = myObject.frequency();
+		assert freq == 4 : "Hi Ho Hi Ho, H: expected 4, but got " + freq;
+		
+		// Test Case 6: Normal case - Target not present in Space
+		myObject = new Frequencer();
+		myObject.setSpace("Hi Ho Hi Ho".getBytes());
+		myObject.setTarget("X".getBytes());
+		freq = myObject.frequency();
+		assert freq == 0 : "Hi Ho Hi Ho, X: expected 0, but got " + freq;
 
 	}
 	catch(Exception e) {
