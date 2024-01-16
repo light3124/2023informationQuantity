@@ -43,26 +43,24 @@ public class Frequencer implements FrequencerInterface {
         if(myTarget == null || myTarget.length == 0) return -1;
         if(mySpace == null || mySpace.length == 0) return 0;
 
-        int targetLength = myTarget.length;
-        int spaceLength = mySpace.length;
-        int count = 0;
 	if(debugMode) { showVariables(); }
-        for(int start = 0; start <= spaceLength - targetLength; start++) { // Is it OK?
+        return subByteFrequency(0, myTarget.length);
+    }
+
+    // I know that here is a potential problem in the declaration.
+    @Override
+    public int subByteFrequency(int start, int end) {
+        int subByteLength = end - start;
+        int count = 0;
+        for(int offset = 0; offset <= mySpace.length - subByteLength; offset++) { // Is it OK?
             boolean abort = false;
-            for(int i = 0; i<targetLength; i++) {
-                if(myTarget[i] != mySpace[start+i]) { abort = true; break; }
+            for(int i = 0; i<subByteLength; i++) {
+                if(myTarget[i] != mySpace[offset+i]) { abort = true; break; }
             }
             if(abort == false) { count++; }
         }
 	if(debugMode) { System.out.printf("%10d\n", count); }
         return count;
-    }
-
-    // I know that here is a potential problem in the declaration.
-    @Override
-    public int subByteFrequency(int start, int length) {
-        // Not yet implemented, but it should be defined as specified.
-        return -1;
     }
 
     public static void main(String[] args) {

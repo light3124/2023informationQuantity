@@ -96,6 +96,7 @@ public class InformationEstimator implements InformationEstimatorInterface {
                     value1 = Double.MAX_VALUE;
                     break;
                 }
+                if(freq < 0) return (double) 0.0;
                 value1 = value1 + f(freq);
 		// it should  -->   value1 = value1 + f(myFrequencer.subByteFrequency(start, end)
 		// note that subByteFrequency is not work for B233367 version.
