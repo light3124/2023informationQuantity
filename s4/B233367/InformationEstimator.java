@@ -46,6 +46,7 @@ public class InformationEstimator implements InformationEstimatorInterface {
     @Override
     public void setTarget(byte[] target) {
         myTarget = target;
+        if(myFrequencer != null) myFrequencer.setTarget(target);
     }
 
     @Override
@@ -90,8 +91,7 @@ public class InformationEstimator implements InformationEstimatorInterface {
                     end++;
                 }
                 // System.out.print("("+start+","+end+")");
-                myFrequencer.setTarget(subBytes(myTarget, start, end));
-                int freq = myFrequencer.frequency();
+                int freq = myFrequencer.subByteFrequency(start, end);
                 if(freq == 0){
                     value1 = Double.MAX_VALUE;
                     break;
