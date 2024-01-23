@@ -149,7 +149,7 @@ public class InformationEstimator implements InformationEstimatorInterface {
         double minValue = Double.MAX_VALUE;
         for(int i = 0; i < length; ++i) {
             double value = iq(start, start + i, values);
-            int freq = myFrequencer.subByteFrequency(start, end);
+            int freq = myFrequencer.subByteFrequency(start + i, end);
             if(freq == 0){
                 value = Double.MAX_VALUE;
                 break;
