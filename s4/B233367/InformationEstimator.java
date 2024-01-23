@@ -160,11 +160,13 @@ public class InformationEstimator implements InformationEstimatorInterface {
             if(value < minValue) minValue = value;
         }
         values[index] = minValue;
+/*
 for(int i = 0; i < values.length; ++i) {
     if(values[i] == Double.MAX_VALUE) System.out.print("MAX ");
     else System.out.printf("%.3f ", values[i]);
 }
 System.out.println();
+*/
         return minValue;
     }
 
